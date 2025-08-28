@@ -2264,15 +2264,15 @@ LoadDiscordInfo()
 
 Info:Divider()
 Info:Section({ 
-    Title = "Axiora Hub",
+    Title = "ABIL VIP",
     TextXAlignment = "Center",
     TextSize = 17,
 })
 Info:Divider()
 
 local Owner = Info:Paragraph({
-    Title = "Main Founder",
-    Desc = "Zynoxis",
+    Title = "BASE ABIL",
+    Desc = "TWENTHREE",
     Image = "rbxassetid://77933782593847",
     ImageSize = 30,
     Thumbnail = "",
@@ -2281,8 +2281,8 @@ local Owner = Info:Paragraph({
 })
 
 local CoOwner = Info:Paragraph({
-    Title = "Axiora Hub",
-    Desc = "Developed by Elvis, Zynoxis Scripts, and Viper",
+    Title = "Abil VVIP",
+    Desc ="Tahap Perkembangan VVIP by abil",
     Image = "rbxassetid://129542787176629",
     ImageSize = 30,
     Thumbnail = "",
