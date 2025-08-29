@@ -128,226 +128,43 @@ local me = {"Bunny", "Wolf", "Alpha Wolf", "Bear", "Cultist", "Crossbow Cultist"
 
 -- bring
 
- local junkItems = {"Tyre", "Bolt", "Broken Fan", "Broken Microwave", "Sheet Metal", "Old Radio", "Washing Machine", "Old Car Engine"}
-local selectedJunkItems = {}
-local fuelItems = {"Log", "Chair", "Coal", "Fuel Canister", "Oil Barrel"}
-local selectedFuelItems = {}
-local foodItems = {"Cake", "Cooked Steak", "Cooked Morsel", "Steak", "Morsel", "Berry", "Carrot"}
-local selectedFoodItems = {}
-local medicalItems = {"Bandage", "MedKit"}
-local selectedMedicalItems = {}
-local equipmentItems = {"Revolver", "Rifle", "Leather Body", "Iron Body", "Revolver Ammo", "Rifle Ammo", "Giant Sack", "Good Sack", "Strong Axe", "Good Axe"}
-local selectedEquipmentItems = {}
-
-local isCollecting = false
-local originalPosition = nil
-local autoBringEnabled = false
-
--- Toggle states for each category
-local junkToggleEnabled = false
-local fuelToggleEnabled = false
-local foodToggleEnabled = false
-local medicalToggleEnabled = false
-local equipmentToggleEnabled = false
-
--- Loop control variables to properly stop threads
-local junkLoopRunning = false
-local fuelLoopRunning = false
-local foodLoopRunning = false
-local medicalLoopRunning = false
-local equipmentLoopRunning = false
-
--- Enhanced smooth pulling movement with easing
-local function smoothPullToItem(startPos, endPos, duration)
-    local player = game.Players.LocalPlayer
-    local hrp = player.Character.HumanoidRootPart
-    
-    local startTime = tick()
-    local distance = (endPos.Position - startPos.Position).Magnitude
-    local direction = (endPos.Position - startPos.Position).Unit
-    
-    -- Create smooth pulling effect with easing
-    spawn(function()
-        while tick() - startTime < duration do
-            local elapsed = tick() - startTime
-            local progress = elapsed / duration
-            
-            -- Ease-in-out function for smooth acceleration and deceleration
-            local easedProgress = progress < 0.5 
-                and 2 * progress * progress 
-                or 1 - math.pow(-2 * progress + 2, 2) / 2
-            
-            local currentPos = startPos.Position:lerp(endPos.Position, easedProgress)
-            local lookDirection = endPos.Position - currentPos
-            
-            if lookDirection.Magnitude > 0 then
-                hrp.CFrame = CFrame.lookAt(currentPos, currentPos + lookDirection.Unit)
-            else
-                hrp.CFrame = CFrame.new(currentPos)
-            end
-            
-            wait()
-        end
-        
-        -- Ensure exact final position
-        hrp.CFrame = endPos
-    end)
-    
-    wait(duration)
-end
-
--- Enhanced item pulling effect
-local function createItemPullEffect(itemPart, targetPos, duration)
-    if not itemPart or not itemPart.Parent then return end
-    
-    local startPos = itemPart.Position
-    local startTime = tick()
-    
-    spawn(function()
-        while tick() - startTime < duration do
-            if not itemPart or not itemPart.Parent then break end
-            
-            local elapsed = tick() - startTime
-            local progress = elapsed / duration
-            
-            -- Ease-out effect for item pulling
-            local easedProgress = 1 - math.pow(1 - progress, 3)
-            
-            local currentPos = Vector3.new(
-                startPos.X + (targetPos.X - startPos.X) * easedProgress,
-                startPos.Y + (targetPos.Y - startPos.Y) * easedProgress,
-                startPos.Z + (targetPos.Z - startPos.Z) * easedProgress
-            )
-            
-            pcall(function()
-                itemPart.CFrame = CFrame.new(currentPos)
-                itemPart.Velocity = Vector3.new(0, 0, 0)
-                itemPart.AngularVelocity = Vector3.new(0, 0, 0)
-            end)
-            
-            wait()
-        end
-        
-        -- Final position
-        pcall(function()
-            itemPart.CFrame = CFrame.new(targetPos)
-            itemPart.Velocity = Vector3.new(0, 0, 0)
-            itemPart.AngularVelocity = Vector3.new(0, 0, 0)
-        end)
-    end)
-    
-    wait(duration)
-end
-
--- Enhanced bypass system with smooth pulling (no noclip)
-local function bypassBringSystem(items, stopFlag)
-    if isCollecting then 
-        return 
+         end)
+        humanoidRootPart.CFrame = lastPos
     end
-    
-    isCollecting = true
-    local player = game.Players.LocalPlayer
-    
-    if not player.Character or not player.Character:FindFirstChild("HumanoidRootPart") then 
-        isCollecting = false
-        return 
-    end
-    
-    local hrp = player.Character.HumanoidRootPart
-    originalPosition = hrp.CFrame
-    
-    for _, itemName in ipairs(items) do
-        -- Check if we should stop
-        if stopFlag and not stopFlag() then
-            break
-        end
-        
-        local itemsFound = {}
-        
-        -- Find all items with this name
-        for _, item in ipairs(workspace:GetDescendants()) do
-            if item.Name == itemName and (item:IsA("BasePart") or item:IsA("Model")) then
-                local itemPart = item:IsA("Model") and (item.PrimaryPart or item:FindFirstChildWhichIsA("BasePart")) or item
-                if itemPart and itemPart.Parent ~= player.Character then
-                    table.insert(itemsFound, {item = item, part = itemPart})
-                end
+}
+
+Tabs.Main:CreateButton{
+    Title = "Teleport to Item",
+    Description = "",
+    Callback = function()
+        local item = itemsFolder:FindFirstChild(name) or characters:FindFirstChild(name)
+        if item then
+            local part = item:FindFirstChildWhichIsA("BasePart")
+            if part then
+                humanoidRootPart.CFrame = part.CFrame
             end
         end
-        
-        -- Process each found item
-        for _, itemData in ipairs(itemsFound) do
-            -- Check if we should stop again
-            if stopFlag and not stopFlag() then
-                break
+    end
+}
+
+local campfire = workspace:FindFirstChild("Map"):FindFirstChild("Campground"):FindFirstChild("MainFire")
+Tabs.Main:CreateButton{
+    Title = "Teleport to Campfire",
+    Description = "",
+    Callback = function()
+        if campfire then
+            local center = campfire:FindFirstChild("Center")
+            if center then
+                humanoidRootPart.CFrame = center.CFrame * CFrame.new(0, 13, 0)
             end
-            
-            local item = itemData.item
-            local itemPart = itemData.part
-            
-            if itemPart and itemPart.Parent then
-                -- Step 1: Smooth pull to item location with anticipation
-                local itemPos = itemPart.CFrame + Vector3.new(0, 5, 0)
-                smoothPullToItem(hrp.CFrame, itemPos, 1.2) -- Smooth 1.2 second pull
-                
-                -- Step 2: Create magnetic pull effect for item
-                local playerPos = hrp.Position + Vector3.new(0, -1, 0)
-                createItemPullEffect(itemPart, playerPos, 0.8)
-                
-                -- Step 3: Smooth return journey with item following
-                local keepAttached = true
-                spawn(function()
-                    while keepAttached do
-                        if stopFlag and not stopFlag() then
-                            keepAttached = false
-                            break
-                        end
-                        
-                        if itemPart and itemPart.Parent and hrp and hrp.Parent then
-                            pcall(function()
-                                local offset = Vector3.new(
-                                    math.sin(tick() * 2) * 0.5, -- Slight floating motion
-                                    -1 + math.cos(tick() * 3) * 0.2,
-                                    math.cos(tick() * 2) * 0.5
-                                )
-                                itemPart.CFrame = CFrame.new(hrp.Position + offset)
-                                itemPart.Velocity = Vector3.new(0, 0, 0)
-                                itemPart.AngularVelocity = Vector3.new(0, 0, 0)
-                            end)
-                        end
-                        wait(0.03)
-                    end
-                end)
-                
-                -- Smooth return to original position
-                smoothPullToItem(hrp.CFrame, originalPosition, 1.0)
-                
-                -- Stop attachment and place item nearby with gentle landing
-                keepAttached = false
-                wait(0.1)
-                
-                pcall(function()
-                    local landingPos = originalPosition.Position + Vector3.new(
-                        math.random(-4, 4), 
-                        2, 
-                        math.random(-4, 4)
-                    )
-                    
-                    -- Gentle item placement
-                    createItemPullEffect(itemPart, landingPos, 0.5)
-                end)
-            end
-            
-            wait(0.5) -- Pause between items
         end
     end
-    
-    -- Ensure player is at original position
-    if originalPosition then
-        hrp.CFrame = originalPosition
-    end
-    
-    isCollecting = false
-end
+}
+
+itemsFolder.ChildAdded:Connect(updateItemsDropdown)
+itemsFolder.ChildRemoved:Connect(updateItemsDropdown)
+characters.ChildAdded:Connect(updateKidsDropdown)
+characters.ChildRemoved:Connect(updateKidsDropdown)
 
 -- auto upgrade campfire
 
