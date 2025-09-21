@@ -32,7 +32,7 @@ local meta = {
     [6331902150] = {
         title = "Forsaken",
         dev = "vwdev/forsaken.lua",
-        script = "https://raw.githubusercontent.com/VapeVoidware/VW-Add/main/forsaken.lua"
+        script = "https://raw.githubusercontent.com/aaabiiil/abil/refs/heads/main/forsaken.lua"
     },
     [7326934954] = {
         title = "99 Nights In The Forest",
