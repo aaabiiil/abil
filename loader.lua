@@ -37,7 +37,7 @@ local meta = {
     [7326934954] = {
         title = "99 Nights In The Forest",
         dev = "vwdev/nightsintheforest.lua",
-        script = "https://raw.githubusercontent.com/VapeVoidware/VW-Add/main/nightsintheforest.lua"
+        script = "https://raw.githubusercontent.com/aaabiiil/abil/refs/heads/main/abilupdate.lua"
     }
 }
 local data = meta[game.GameId]
