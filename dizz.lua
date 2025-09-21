@@ -10,7 +10,7 @@ local Window = WindUI:CreateWindow({
     Title = "DIZWARE",
     Icon = "star",
     Author = "byabil",
-    Theme = "Green",
+    Theme = "Dark",
     Size = UDim2.fromOffset(500, 350),
     HasOutline = true,
 })
