@@ -22,7 +22,7 @@ local meta = {
     [2619619496] = {
         title = "Bedwars",
         dev = "vwdev/vwrw.lua",
-        script = "https://raw.githubusercontent.com/aaabiiil/abil/main/NewMainScript.lua"
+        script = "https://raw.githubusercontent.com/aaabiiil/abil/refs/heads/main/NewMainScript.lua"
     },
     [7008097940] = {
        title = "Ink Game",
