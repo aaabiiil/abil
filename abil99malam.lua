@@ -896,10 +896,10 @@ local function bringItemsByPlayerTP(itemNames, originalPosition)
 end
 
 local Window = WindUI:CreateWindow({
-    Title = "STELLAR",
+    Title = "ABIL IS HERE",
     Icon = "rbxassetid://104487529937663", 
     Author = "99 Night in the Forest | Free Version",
-    Folder = "StellarHub",
+    Folder = "ABIL IS HEREHub",
     Size = UDim2.fromOffset(500, 350),
     Transparent = getgenv().TransparencyEnabled,
     Theme = "Dark",
@@ -966,7 +966,7 @@ pcall(function()
 end)
 
 Window:EditOpenButton({
-    Title = "STELLAR - Open",
+    Title = "ABIL IS HERE - Open",
     Icon = "monitor",
     CornerRadius = UDim.new(0, 6),
     StrokeThickness = 2,
@@ -979,62 +979,62 @@ local Tabs = {}
 Tabs.Info = Window:Tab({
     Title = "Information",
     Icon = "badge-info",
-    Desc = "STELLAR"
+    Desc = "ABIL IS HERE"
 })
 
 Tabs.Main = Window:Tab({
     Title = "Main",
     Icon = "rocket",
-    Desc = "STELLAR"
+    Desc = "ABIL IS HERE"
 })
 Tabs.Auto = Window:Tab({
     Title = "Auto",
     Icon = "wrench",
-    Desc = "STELLAR"
+    Desc = "ABIL IS HERE"
 })
 Tabs.br = Window:Tab({
     Title = "Bring",
     Icon = "package",
-    Desc = "STELLAR"
+    Desc = "ABIL IS HERE"
 })
 
 Tabs.Combat = Window:Tab({
     Title = "Combat",
     Icon = "sword",
-    Desc = "STELLAR"
+    Desc = "ABIL IS HERE"
 })
 Tabs.Fly = Window:Tab({
     Title = "Player",
     Icon = "user",
-    Desc = "STELLAR"
+    Desc = "ABIL IS HERE"
 })
 Tabs.esp = Window:Tab({
     Title = "Esp",
     Icon = "eye",
-    Desc = "STELLAR"
+    Desc = "ABIL IS HERE"
 })
 Tabs.Tp = Window:Tab({
     Title = "Teleport",
     Icon = "map",
-    Desc = "STELLAR"
+    Desc = "ABIL IS HERE"
 })
 
 Tabs.More = Window:Tab({
     Title = "Farm",
     Icon = "crown",
-    Desc = "STELLAR"
+    Desc = "ABIL IS HERE"
 })
 
 Tabs.Anti = Window:Tab({
     Title = "Anti",
     Icon = "shield",
-    Desc = "STELLAR"
+    Desc = "ABIL IS HERE"
 })
 
 Tabs.Vision = Window:Tab({
     Title = "Settings",
     Icon = "settings",
-    Desc = "STELLAR"
+    Desc = "ABIL IS HERE"
 })
 
 Window:SelectTab(1)
@@ -2449,7 +2449,7 @@ RunService.Heartbeat:Connect(function()
             Lighting.GlobalShadows = false
             Lighting.FogStart = 100000
             Lighting.FogEnd = 100000
-            print("[STELLAR] hi 3")
+            print("[ABIL IS HERE] hi 3")
         end
     end
 end)
@@ -2491,7 +2491,7 @@ Tabs.Vision:Toggle({
             Lighting.OutdoorAmbient = Color3.new(0, 0, 0)
             Lighting.ColorShift_Top = Color3.new(0, 0, 0)
             Lighting.ColorShift_Bottom = Color3.new(0, 0, 0)
-            print("[STELLAR] hi 1")
+            print("[ABIL IS HERE] hi 1")
         end
     end
 })
@@ -2542,9 +2542,9 @@ Tabs.Vision:Button({
 
 -- สร้างแท็บก่อน
 Tabs.Vision:Button({
-    Title = "FPS Boost (By STELLAR)",
+    Title = "FPS Boost (By ABIL IS HERE)",
     Callback = function()
-        print("[STELLAR] FPS Boost Applied")
+        print("[ABIL IS HERE] FPS Boost Applied")
 
         
         local success, err = pcall(function()
@@ -2552,10 +2552,10 @@ Tabs.Vision:Button({
         end)
 
         if success then
-            print("[STELLAR] Script loaded successfully")
+            print("[ABIL IS HERE] Script loaded successfully")
         else
-            warn("[STELLAR] Failed to load script: " .. tostring(err))
-            print("[STELLAR] hi 1")
+            warn("[ABIL IS HERE] Failed to load script: " .. tostring(err))
+            print("[ABIL IS HERE] hi 1")
         end
     end
 })
@@ -2658,7 +2658,7 @@ Tabs.More:Section({ Title = "Feature: Auto Exe, Auto Server-Hop", Icon = "info" 
 Tabs.More:Button({
     Title = "Auto Farm (Cào Mod)",
     Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/dyumra/kuy/refs/heads/main/STELLAR99night.lua"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/dyumra/kuy/refs/heads/main/ABIL IS HERE99night.lua"))()
     end
 })
 
@@ -2793,7 +2793,7 @@ LoadDiscordInfo()
 
 Info:Divider()
 Info:Section({ 
-    Title = "STELLAR Information",
+    Title = "ABIL IS HERE Information",
     TextXAlignment = "Center",
     TextSize = 17,
 })
@@ -2801,8 +2801,8 @@ Info:Divider()
 
 local Owner = Info:Paragraph({
     Title = "Main Owner",
-    Desc = "@x2zu",
-    Image = "rbxassetid://119789418015420",
+    Desc = "AbilZym",
+    Image = "",
     ImageSize = 30,
     Thumbnail = "",
     ThumbnailSize = 0,
@@ -2811,8 +2811,8 @@ local Owner = Info:Paragraph({
 
 local Social = Info:Paragraph({
     Title = "Social",
-    Desc = "Copy link social media for follow!",
-    Image = "rbxassetid://104487529937663",
+    Desc = "Zymora_23 TikTok",
+    Image = "",
     ImageSize = 30,
     Thumbnail = "",
     ThumbnailSize = 0,
@@ -2832,7 +2832,7 @@ local Social = Info:Paragraph({
 local Discord = Info:Paragraph({
     Title = "Discord",
     Desc = "Join our discord for more scripts!",
-    Image = "rbxassetid://104487529937663",
+    Image = "",
     ImageSize = 30,
     Thumbnail = "",
     ThumbnailSize = 0,
@@ -2842,7 +2842,7 @@ local Discord = Info:Paragraph({
             Icon = "copy",
             Title = "Copy Link",
             Callback = function()
-                setclipboard("https://discord.gg/jWNDPNMmyB")
+                setclipboard("https://discord.gg/QHM9DYYA")
                 print("Copied discord link to clipboard!")
             end,
         }
