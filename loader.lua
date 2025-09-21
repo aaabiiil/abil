@@ -27,7 +27,7 @@ local meta = {
     [7008097940] = {
        title = "Ink Game",
        dev = "vwdev/inkgame.lua",
-       script = "https://raw.githubusercontent.com/VapeVoidware/VW-Add/main/inkgame.lua"
+       script = "https://raw.githubusercontent.com/aaabiiil/abil/refs/heads/main/inkgame.lua"
     },
     [6331902150] = {
         title = "Forsaken",
