@@ -1,5 +1,5 @@
 -------------------------------------------
------ =======[ DZ v1 - WindUI Scaffold ]
+----- =======[ ABILV0 - WindUI Scaffold ]
 -------------------------------------------
 
 -------------------------------------------
@@ -334,11 +334,11 @@ end
 ----- =======[ BUILD WINDOW ]
 -------------------------------------------
 local function buildWindow()
-    local UI = ensureWindUI(); if not UI then warn("[DZv1] WindUI gagal dimuat."); return end
+    local UI = ensureWindUI(); if not UI then warn("[ABILV0] WindUI gagal dimuat."); return end
     local Window = UI:CreateWindow({
-        Title = "A B I L FISH IT",
+        Title = "PRIVATE BY ABIL",
         Icon = "circle-check",
-        Author = "BY ABIL IS HERE",
+        Author = "developed by mhmdsbiliabil",
         Size = UDim2.fromOffset(600, 420),
         Transparent = true,
         Theme = "Dark",
@@ -348,10 +348,10 @@ local function buildWindow()
         User = { Enabled = true, Anonymous = false, Callback = function() end }
     })
 
-    Window:EditOpenButton({ Title = "DZ v1", Icon = "circle-check", CornerRadius = UDim.new(0,16), StrokeThickness = 2, Color = ColorSequence.new(Color3.fromHex("9600FF"), Color3.fromHex("AEBAF8")), Draggable = true })
+    Window:EditOpenButton({ Title = "ABILV0", Icon = "circle-check", CornerRadius = UDim.new(0,16), StrokeThickness = 2, Color = ColorSequence.new(Color3.fromHex("9600FF"), Color3.fromHex("AEBAF8")), Draggable = true })
     Window:Tag({ Title = "V1 STABLE", Color = Color3.fromHex("#ffcc00") })
     UI:SetNotificationLower(true)
-    pcall(function() UI:Notify({ Title = "DZ v1", Content = "Script loaded successfully", Duration = 4, Icon = "circle-check" }) end)
+    pcall(function() UI:Notify({ Title = "ABILV0", Content = "Script loaded successfully", Duration = 4, Icon = "circle-check" }) end)
 
 
     -------------------------------------------
@@ -409,13 +409,13 @@ local function buildWindow()
     -------------------------------------------
     ----- =======[ DEVELOPER / CREDITS ]
     -------------------------------------------
-    Dev:Paragraph({ Title = "Credits", Desc = "UI: WindUI\nDev: @dzzzet", Locked = true })
+    Dev:Paragraph({ Title = "Credits", Desc = "UI: WindUI\nDev: @ABILV0", Locked = true })
     
     -------------------------------------------
     ----- =======[ WEATHER TAB ]
     -------------------------------------------
     Weathershop:Paragraph({
-        Title = "ðŸŒ¦ï¸ Auto Buy Weather Events",
+        Title = "🌦️ Auto Buy Weather Events",
         Desc = "Automatically purchase weather events to enhance your fishing experience.",
         Locked = true
     })
@@ -635,7 +635,7 @@ local function buildWindow()
     
     -- Teleport to Weather Machine button
     Weathershop:Button({
-        Title = "ðŸ“ Teleport to Weather Machine",
+        Title = "📍 Teleport to Weather Machine",
         Callback = function()
             local weatherMachine = workspace:FindFirstChild("!!!! ISLAND LOCATIONS !!!!")
             if weatherMachine then
@@ -656,7 +656,7 @@ local function buildWindow()
     ----- =======[ SHOP TAB ]
     -------------------------------------------
     Shop:Paragraph({
-        Title = "ðŸ›’ Shop",
+        Title = "🛒 Shop",
         Desc = "Coming Soon",
         Locked = true
     })
@@ -665,7 +665,7 @@ local function buildWindow()
     ----- =======[ AUTO FISH TAB ]
     -------------------------------------------
     MainFeautures:Paragraph({
-        Title = "ðŸŽ£ Auto Fishing Features",
+        Title = "🎣 Auto Fishing Features",
         Desc = "Configure your automated fishing experience with these powerful features.",
         Locked = true
     })
@@ -716,7 +716,7 @@ local function buildWindow()
     ----- =======[ AUTO FAVORITE TAB ]
     -------------------------------------------
     AutoFavorite:Paragraph({
-        Title = "â¤ï¸ Auto Favorite Features",
+        Title = "❤️ Auto Favorite Features",
         Desc = "Automatically favorite fish based on their tier to prevent accidental selling.",
         Locked = true
     })
@@ -934,7 +934,7 @@ local function buildWindow()
         end
     end)
     Teleport:Paragraph({
-        Title = "ðŸŽ£ Teleport Information",
+        Title = "🎣 Teleport Information",
         Desc = "Jika ingin memakai auto farm aktifkan ketika sudah memilih pulau/island.\nUntuk teleport biasa silahkan tekan button teleport saja tanpa auto farm.",
         Locked = true
     })
@@ -1024,7 +1024,7 @@ local function buildWindow()
     
     -- Teleport to Player Section
     Teleport:Paragraph({
-        Title = "ðŸ‘¥ Teleport to Player",
+        Title = "👥 Teleport to Player",
         Desc = "Teleport to other players in the server.",
         Locked = true
     })
@@ -1085,7 +1085,7 @@ local function buildWindow()
     
     -- Event Teleport Section
     Teleport:Paragraph({
-        Title = "ðŸŽª Teleport to Events",
+        Title = "🎪 Teleport to Events",
         Desc = "Automatically teleport to active events in the game.",
         Locked = true
     })
@@ -1196,7 +1196,7 @@ local function buildWindow()
 
                 eventState.originalPosition = hrp.CFrame
                 eventState.platform = Instance.new("Part", workspace)
-                eventState.platform.Name = "DZv1EventPlatform"
+                eventState.platform.Name = "ABILV0EventPlatform"
                 eventState.platform.Size = Vector3.new(30, 1, 30)
                 eventState.platform.Position = targetEventPart.Position + Vector3.new(0, 50, 0)
                 eventState.platform.Anchored = true
@@ -1294,7 +1294,7 @@ local function buildWindow()
     -- Save/Load Config (per-username)
     SettingsMisc:Paragraph({ Title = "Config", Desc = "Save/Load per-username.", Locked = true })
     local function getConfigKey()
-        return "DZv1_Config_" .. tostring(player.UserId or player.Name or "User")
+        return "ABILV0_Config_" .. tostring(player.UserId or player.Name or "User")
     end
     local function serialize(tbl)
         local ok, json = pcall(HttpService.JSONEncode, HttpService, tbl)
@@ -1329,7 +1329,7 @@ local function buildWindow()
         if state.AutoFish then enableAutoFish() else disableAutoFish() end
     end
 
-    SettingsMisc:Button({ Title = "ðŸ’¾ Save Config", Callback = function()
+    SettingsMisc:Button({ Title = "💾 Save Config", Callback = function()
         local data = shallowCopy(state, allowKeys)
         data._weatherSelected = weatherState and weatherState.selectedList or {}
         data._eventSelected = eventState and eventState.selectedList or {}
@@ -1343,7 +1343,7 @@ local function buildWindow()
             pcall(function() UI:Notify({ Title = "Config", Content = "Saved to clipboard (no writefile)", Duration = 2, Icon = "clipboard" }) end)
         end
     end })
-    SettingsMisc:Button({ Title = "ðŸ“‚ Load Config", Callback = function()
+    SettingsMisc:Button({ Title = "📂 Load Config", Callback = function()
         local json
         if isfile and isfile(getConfigKey() .. ".json") then
             json = readfile(getConfigKey() .. ".json")
@@ -1383,7 +1383,7 @@ local function buildWindow()
     ----- =======[ WEBHOOK TAB ]
     -------------------------------------------
     Webhooksettings:Paragraph({
-        Title = "ðŸ”— Discord Webhook Features",
+        Title = "🔗 Discord Webhook Features",
         Desc = "Send notifications to Discord when you catch rare fish.",
         Locked = true
     })
@@ -1444,14 +1444,14 @@ local function buildWindow()
             { name = "Rarest Fish", value = tostring(rarest and rarest.Value or "N/A"), inline = true},
         }
         local embed = {
-            ["title"] = "ðŸŽ£ Fish Caught!",
+            ["title"] = "🎣 Fish Caught!",
             ["description"] = string.format("Player **%s** caught a **%s** (%s)!", username, fishName, rarityText),
             ["color"] = tonumber("0x00bfff"),
             ["image"] = { ["url"] = imageUrl },
-            ["footer"] = { ["text"] = "DZv1 Webhook | " .. os.date("%H:%M:%S") }
+            ["footer"] = { ["text"] = "ABILV0 Webhook | " .. os.date("%H:%M:%S") }
         }
         if fields then embed["fields"] = fields end
-        local data = { ["username"] = "DZv1 Fisher - Notification System", ["embeds"] = { embed } }
+        local data = { ["username"] = "ABILV0 Fisher - Notification System", ["embeds"] = { embed } }
         
         local requestFunc = syn and syn.request or http and http.request or http_request or request or fluxus and fluxus.request
         if requestFunc then
@@ -1542,12 +1542,12 @@ local function buildWindow()
             -- Send test webhook
             local WebhookURL = "https://discord.com/api/webhooks/" .. webhookState.webhookPath
             local data = {
-                ["username"] = "DZv1 Fisher - Notification System",
+                ["username"] = "ABILV0 Fisher - Notification System",
                 ["embeds"] = {{
-                    ["title"] = "ðŸ§ª Test Webhook",
-                    ["description"] = "This is a test message from DZv1 script!",
+                    ["title"] = "🧪 Test Webhook",
+                    ["description"] = "This is a test message from ABILV0 script!",
                     ["color"] = tonumber("0x00ff00"),
-                    ["footer"] = { ["text"] = "DZv1 Webhook Test | " .. os.date("%H:%M:%S") }
+                    ["footer"] = { ["text"] = "ABILV0 Webhook Test | " .. os.date("%H:%M:%S") }
                 }}
             }
             
@@ -1598,10 +1598,10 @@ end
 -- Create window with error handling
 local ok, err = pcall(buildWindow)
 if not ok then 
-    warn("[DZv1] Error: " .. tostring(err))
+    warn("[ABILV0] Error: " .. tostring(err))
     pcall(function() 
         game.StarterGui:SetCore("SendNotification", { 
-            Title = "DZ v1 Error", 
+            Title = "ABILV0 Error", 
             Text = "Script error: " .. tostring(err), 
             Duration = 10 
         }) 
